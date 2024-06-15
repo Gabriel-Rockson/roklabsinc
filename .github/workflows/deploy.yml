@@ -52,7 +52,6 @@ jobs:
           else
             echo "Unable to determine package manager"
             exit 1
-          fi
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -68,8 +67,7 @@ jobs:
           static_site_generator: next
       - name: Setup pnpm
         if: steps.detect-package-manager.outputs.manager == 'pnpm'
-        run: |
-          npm install -g pnpm
+        run: npm install -g pnpm
       - name: Restore cache
         uses: actions/cache@v4
         with:
